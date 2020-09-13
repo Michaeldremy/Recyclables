@@ -21,6 +21,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "React Native application that acts as an OfferUp clone",
+    "githubUrl": "https://github.com/Michaeldremy/Recyclables"
   }
 }
