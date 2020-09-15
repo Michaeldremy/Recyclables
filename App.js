@@ -11,10 +11,11 @@ import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
 import AppText from "./app/components/AppText";
 import LoginScreen from "./app/screens/LoginScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
 
 export default function App() {
 
   return (
-    <LoginScreen />
+    <RegisterScreen />
   );
 }
