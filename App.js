@@ -7,9 +7,10 @@ import Screen from "./app/components/Screen";
 import Icon from "./app/components/Icon";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
+import AppTextInput from './app/components/AppTextInput';
 
 export default function App() {
   return (
-    <ListingsScreen />
+    <AppTextInput placeholder="username" icon="email"/>
   );
 }
