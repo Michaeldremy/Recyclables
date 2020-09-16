@@ -12,10 +12,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import color from "../config/color";
 
 function ImageInput({ imageUri, onChangeImage }) {
-
   useEffect(() => {
     requestPermission();
-  }, [])
+  }, []);
 
   const requestPermission = async () => {
     const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -26,8 +25,8 @@ function ImageInput({ imageUri, onChangeImage }) {
     if (!imageUri) selectImage();
     else
       Alert.alert("Delete", "Are you sure you want to delete this image?", [
-        { text: "No" },
         { text: "Yes", onPress: () => onChangeImage(null) },
+        { text: "No" },
       ]);
   };
 
