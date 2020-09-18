@@ -1,20 +1,22 @@
 import React from "react";
-import { View, StyleSheet, Image, SafeAreaView, Text } from "react-native";
+import { View, StyleSheet, Image, SafeAreaView } from "react-native";
 
 import AppText from "../components/AppText";
 import ListItem from "../components/ListItem";
 import color from "../config/color";
 
-function ListDetailsScreen(props) {
+function ListDetailsScreen({ route }) {
+  const listing = route.params;
+
   return (
     <SafeAreaView>
       <Image
         style={styles.image}
-        source={require("../assets/jacket.jpg")}
+        source={listing.image}
       ></Image>
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>Red Jacket for sale</AppText>
-        <AppText style={styles.price}>$100</AppText>
+        <AppText style={styles.title}>{listing.title}</AppText>
+        <AppText style={styles.price}>${listing.price}</AppText>
         <View style={styles.userContainer}>
           <ListItem
             image={require("../assets/MichaelAvatar.jpg")}
