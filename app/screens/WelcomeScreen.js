@@ -9,7 +9,7 @@ import {
 
 import AppButton from "../components/AppButton";
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       style={styles.background}
@@ -21,8 +21,8 @@ function WelcomeScreen(props) {
         <Text style={styles.catchPhrase}>Sell What You Don't Need</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <AppButton title="Login" />
-        <AppButton title="Register" colors="secondary" />
+        <AppButton title="Login" onPress={() => navigation.navigate("Login")}/>
+        <AppButton title="Register" colors="secondary" onPress={() => navigation.navigate("Register")}/>
       </View>
     </ImageBackground>
   );
