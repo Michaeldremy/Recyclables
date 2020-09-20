@@ -1,30 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet } from "react-native";
 
-import AppText from '../components/AppText'
-import ActivityIndicator from '../components/ActivityIndicator'
-import AppButton from '../components/AppButton'
+import AppText from "../components/AppText";
+import ActivityIndicator from "../components/ActivityIndicator";
+import AppButton from "../components/AppButton";
 import color from "../config/color";
 import Card from "../components/Card";
 import listingsApi from "../api/listings";
 import routes from "../navigation/routes";
 import Screen from "../components/Screen";
+import useApi from "../hooks/useApi";
 
 function ListingsScreen({ navigation }) {
-  const [listings, setListings] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const loadListings = async () => {
-    setLoading(true);
-    const response = await listingsApi.getListings();
-    setLoading(false);
-
-    if (!response.ok) return setError(true);
-
-    setError(false);
-    setListings(response.data);
-  };
+  const { data: listings, error, loading, request: loadListings } = useApi(
+    listingsApi.getListings
+  );
 
   useEffect(() => {
     loadListings();
@@ -38,7 +28,7 @@ function ListingsScreen({ navigation }) {
           <AppButton title="Retry" onPress={loadListings} />
         </>
       )}
-      <ActivityIndicator visible={loading}/>
+      <ActivityIndicator visible={loading} />
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
