@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Image, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView } from "react-native";
+import { Image } from "react-native-expo-image-cache";
 
 import AppText from "../components/AppText";
 import ListItem from "../components/ListItem";
@@ -12,7 +13,9 @@ function ListDetailsScreen({ route }) {
     <SafeAreaView>
       <Image
         style={styles.image}
-        source={listing.image}
+        preview={{ uri: listing.images[0].thumbnailUrl }}
+        tint="light"
+        uri={listing.images[0].url}
       ></Image>
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>{listing.title}</AppText>
