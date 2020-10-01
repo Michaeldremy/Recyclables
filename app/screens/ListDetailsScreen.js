@@ -1,8 +1,9 @@
 import React from "react";
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
 import { Image } from "react-native-expo-image-cache";
 
 import AppText from "../components/AppText";
+import ContactSellerForm from "../components/ContactSellerForm";
 import ListItem from "../components/ListItem";
 import color from "../config/color";
 
@@ -10,13 +11,16 @@ function ListDetailsScreen({ route }) {
   const listing = route.params;
 
   return (
-    <SafeAreaView>
+    <KeyboardAvoidingView
+      behavior="position"
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
+    >
       <Image
         style={styles.image}
         preview={{ uri: listing.images[0].thumbnailUrl }}
         tint="light"
         uri={listing.images[0].url}
-      ></Image>
+      />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>{listing.title}</AppText>
         <AppText style={styles.price}>${listing.price}</AppText>
@@ -27,8 +31,9 @@ function ListDetailsScreen({ route }) {
             subTitle="5 Listings"
           />
         </View>
+        <ContactSellerForm listing={listing} />
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -46,7 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: color.secondary,
     fontWeight: "bold",
-    marginVertical: 10,
+    marginVertical: 0,
   },
   detailsContainer: {
     padding: 20,
@@ -57,7 +62,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   userContainer: {
-    marginVertical: 40,
+    marginVertical: 20,
   },
 });
 
